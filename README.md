@@ -4,7 +4,7 @@
 
 The **Hubble constant (H₀)** describes how fast the universe is expanding today. It is one of the most fundamental numbers in cosmology — and right now, two independent ways of measuring it give answers that disagree by roughly 5–10%, at a statistical significance of ~5σ. This disagreement is known as the **Hubble tension**, and it is one of the most prominent open problems in modern cosmology.
 
-On one side: measurements of the early universe using the cosmic microwave background (CMB, e.g. the Planck satellite) give H₀ ≈ 67 km/s/Mpc (kilometres per second per megaparsec, where 1 megaparsec ≈ 3.26 million light-years). On the other side: measurements of the local universe using the cosmic distance ladder give H₀ ≈ 73 km/s/Mpc. These two numbers should agree if our standard cosmological model is correct. They do not.
+On one side: measurements of the early universe using the cosmic microwave background (CMB) give H₀ ≈ 67 km/s/Mpc (kilometres per second per megaparsec; e.g. Planck Collaboration 2020, and others). On the other side: measurements of the local universe using the cosmic distance ladder give H₀ ≈ 73 km/s/Mpc (e.g. Riess et al. 2022, and others). These two numbers should agree if our standard cosmological model is correct. They do not.
 
 **This matters enormously.** If the tension is real — not a measurement error — it could be the first observational evidence of physics beyond the standard ΛCDM model (Lambda Cold Dark Matter — the current best-fit model of cosmology): new particles, new interactions, or a different history of cosmic expansion. Identifying whether the tension is a genuine signal or a systematic error in one or both measurement chains is therefore one of the highest-priority questions in cosmology today.
 
@@ -13,14 +13,14 @@ On one side: measurements of the early universe using the cosmic microwave backg
 The local H₀ measurement proceeds in steps (rungs):
 
 1. **Rung 1 — Geometric anchor:** The distance to a nearby galaxy (NGC 4258) is measured directly from water maser orbits (radio emission from water molecules orbiting the galaxy's central black hole, whose geometry and velocity can be measured to give a purely geometric distance), with no assumptions about stellar physics.
-2. **Rung 2 — TRGB distances:** That geometric distance calibrates a standard candle (an object whose intrinsic brightness is known, so its distance can be inferred from how bright it appears) called the **Tip of the Red Giant Branch (TRGB)**, which is then used to measure distances to galaxies that also host Type Ia supernovae (a class of stellar explosions with nearly uniform intrinsic brightness, usable as distance indicators).
+2. **Rung 2 — TRGB distances:** That geometric distance calibrates a standard candle (an object whose intrinsic brightness is known, so its distance can be inferred from how bright it appears) called the **Tip of the Red Giant Branch (TRGB)**, which is then used to measure distances to galaxies that also host Type Ia supernovae (a class of stellar explosions with nearly uniform and standardizable intrinsic brightness, usable as distance indicators).
 3. **Rung 3 — Supernovae to H₀:** The calibrated supernova brightness, combined with supernova observations of galaxies receding with the Hubble flow (the general expansion of the universe, observed as a redshift proportional to distance), yields H₀.
 
-Errors anywhere in this chain can bias H₀. The key question this challenge asks is: **how much do choices made in the TRGB step (Rung 2) affect the final H₀?**
+Errors anywhere in this chain can bias H₀. The key question this challenge asks is: **how much do choices made in the TRGB steps (Rungs 1 & 2) affect the final H₀?**
 
 ### What is the TRGB?
 
-Every old galaxy contains millions of red giant stars. As these stars age, they grow steadily brighter — until they reach a critical luminosity at which helium ignition abruptly ends the red giant phase. This upper brightness limit is called the **Tip of the Red Giant Branch**. Because it occurs at nearly the same luminosity in all old stellar populations, it works like a cosmic ruler: measure how bright the tip *appears* in a galaxy, compare it to how bright it *intrinsically* is (calibrated from the geometric anchor), and you get the distance. The distance is reported as a **distance modulus** μ, defined as μ = 5 log₁₀(d / 10 pc), where d is the distance in parsecs (1 parsec ≈ 3.26 light-years) — a larger μ means a more distant galaxy.
+Every old galaxy contains millions of red giant stars. As these stars age, they grow steadily brighter — until they reach a critical luminosity at which helium ignition abruptly ends the red giant phase. This upper brightness limit is called the **Tip of the Red Giant Branch**. Because it occurs at nearly the same luminosity in all old stellar populations, it works like a cosmic ruler: measure how bright the tip *appears* in a galaxy, compare it to how bright it *intrinsically* is (calibrated from the geometric anchor), and you get the distance. The distance is reported as a **distance modulus** μ, defined as μ = 5 log₁₀(d / 10 pc), where d is the distance in parsecs — a larger μ means a more distant galaxy.
 
 In practice, finding the tip requires analyzing a catalog of individual stars in a galaxy (the photometry), selecting the red giant population, building a brightness histogram (the luminosity function), and detecting the sharp drop at the bright end — the point where star counts abruptly fall off because no stars exist above the tip. The sharpness of this edge depends on analysis choices — which stars you include, how much you smooth the histogram — and those choices can shift the inferred distance and therefore H₀. That sensitivity is what this challenge is designed to measure.
 
@@ -64,8 +64,6 @@ If you have not already, download this repository to your computer. On the [Cosm
 
 When downloaded from GitHub, the unzipped folder will typically be named `Data-Challenge-main`. You can rename it to anything you like or leave it as-is — the name does not matter, only its contents. The folder should contain this README and the subfolders `1_trgb/`, `2_hubble_constant/`, and `photometry/`.
 
-Note: the `photometry/` folder in the downloaded zip will be empty — the photometry data files are downloaded separately in step 3.
-
 (If you are familiar with git, you can also clone the repository instead.)
 
 ### 2. Install Python and required packages
@@ -84,23 +82,7 @@ conda install numpy pandas matplotlib astropy jupyter
 pip install numpy pandas matplotlib astropy jupyter
 ```
 
-### 3. Download the photometry data
-
-The galaxy photometry files are hosted on the **[CosmoVerse Data Challenge GitHub repository](https://github.com/cosmoversecost/Data-Challenge)**.
-
-Go to that repository and look for a folder named `photometry` (or similar — check with your session coordinator if you are unsure where the files are). Download the CSV files for your assigned galaxy and for NGC 4258. To download an individual file from GitHub: click the filename, then click the **Download raw file** button (the downward arrow icon near the top right of the file view).
-
-Place the downloaded CSV files into the `photometry/` folder inside your local `CosmoVerse Data Challenge/` folder. The `photometry/` folder already exists — just move the files into it.
-
-You need:
-- The photometry file for **NGC 4258** (the anchor galaxy — always required, regardless of your assigned galaxy)
-- The photometry file for each target galaxy you have been assigned
-
-Each CSV file is named after the galaxy it contains (e.g. `NGC1365_13691.csv`).
-
-> If you are unsure which galaxy you have been assigned, check with your session coordinator.
-
-### 4. Verify the folder structure
+### 3. Verify the folder structure
 
 After downloading, your directory should look like this:
 
@@ -109,14 +91,14 @@ CosmoVerse Data Challenge/
 ├── README.md                     ← this file
 ├── photometry/
 │   ├── NGC4258_xxxxx.csv         ← anchor galaxy (always needed)
-│   └── NGC1365_xxxxx.csv         ← your target galaxy (plus any others assigned to you)
+│   └── NGC1365_xxxxx.csv         ← your target galaxy
 ├── 1_trgb/
-│   └── TRGB_Distance_Measurement_CosmoVerse_DataChallenge_2026.ipynb
+│   └── TRGB_distance_measurement.ipynb
 └── 2_hubble_constant/
     └── demo_mu_to_H0.ipynb
 ```
 
-### 5. Launch Jupyter
+### 4. Launch Jupyter
 
 Open a terminal and navigate to the `CosmoVerse Data Challenge/` folder, then launch Jupyter. For example, if the folder is on your Desktop:
 
@@ -152,25 +134,25 @@ The pipeline has two parts connected by a shared results file:
 
 2. **Part 2 — H₀ notebook (`2_hubble_constant/`):** Your exported distance moduli are automatically loaded and fed into the fixed supernova pipeline, which computes H₀.
 
-The file `trgb_results.csv` (created automatically in the `CosmoVerse Data Challenge/` folder the first time you export) is the handoff between the two parts. It accumulates your measurements one galaxy at a time.
+The file `trgb_results.csv` (created automatically in the `CosmoVerse Data Challenge/` folder the first time you export) is the handoff between the two parts. It accumulates your measurements one galaxy at a time (there is also a batch option to run through all galaxies with the same measurement parameters).
 
 ---
 
 ## Part 1: Measure the Distance to a Galaxy
 
-In the Jupyter browser window, click on `1_trgb/` and then open `TRGB_Distance_Measurement_CosmoVerse_DataChallenge_2026.ipynb`.
+In the Jupyter browser window, click on `1_trgb/` and then open `TRGB_distance_measurement.ipynb`.
 
 ---
 
 ### Step 1 — Pick your galaxy
 
-Scroll down through the notebook until you see the heading **"2."** or **"Section 2"**. Find the line:
+Scroll down through the notebook until you see the heading **"2."**. Find the line:
 
 ```python
 TARGET_GALAXY = 'NGC1365'   # ← change this
 ```
 
-Replace `'NGC1365'` with the name of your assigned galaxy (e.g. `'NGC4536'`). Use the exact same capitalization and format as the photometry filename — for most galaxies this is `'NGC'` followed by the number with no spaces (e.g. `'NGC1448'`). For Messier galaxies the prefix is `'M'` (e.g. `'M101'`), and for UGC galaxies it is `'UGC'` followed by the number. Do not change anything else in this cell.
+Replace `'NGC1365'` with the name of your assigned galaxy (e.g. `'NGC4536'`). Use the exact same capitalization and format as the photometry filename — for most galaxies this is `'NGC'` followed by the number with no spaces (e.g. `'NGC1448'`). For Messier galaxies the prefix is `'M'` (e.g. `'M101'`). Do not change anything else in this cell.
 
 ---
 
@@ -198,7 +180,7 @@ This is the scientific heart of the challenge. Your goal is to make choices that
 Go to **Section 3** in the notebook (and also the quick-tune cell near the top of **Section 6**, which lets you adjust parameters without scrolling all the way back up). You will find parameter cells like:
 
 ```python
-SELECTION['color_lo']  = 0.8   # blue edge of the RGB selection region
+SELECTION['color_lo']  = 1.0   # blue edge of the RGB selection region
 SELECTION['color_hi']  = 1.5   # red edge of the RGB selection region
 SMOOTHING['tau']       = 0.10  # smoothing bandwidth in magnitudes
 ```
@@ -207,9 +189,9 @@ Change these values, then re-run from that cell downward: click the parameter ce
 
 **What to look for in the three diagnostic panels:**
 
-- **Color-magnitude diagram (left panel):** The red giant branch should appear as a roughly diagonal sequence of stars running from faint (bottom) to bright (top). Your selection region (shown as a box) should surround the upper part of this sequence. Avoid including stars that are clearly not on the red giant branch — for example, a horizontal sequence of stars above the RGB tip (these are helium-burning stars at a later evolutionary stage, called AGB stars) or a vertical blue sequence (young, massive stars unrelated to the red giant branch). The exact appearance varies by galaxy.
+- **Color-magnitude diagram (left panel):** The red giant branch should appear as a roughly diagonal sequence of stars running from faint (bottom) to bright (top). Your selection region (shown as a box) should surround the upper part of this sequence. Avoid including stars that are clearly not on the red giant branch — for example, a sparse scatter of stars just above the RGB tip (these are AGB stars — helium shell-burning stars at a slightly later evolutionary stage than the RGB), a roughly horizontal sequence at bluer colors (the horizontal branch or red clump — core helium-burning stars), or a vertical blue sequence (young, massive stars unrelated to the red giant branch). The exact appearance varies by galaxy.
 - **Luminosity function and Sobel response (middle panels):** The brightness histogram of selected stars should show a rising trend toward fainter magnitudes (in astronomy, fainter = larger magnitude number, so this means rising toward the right side of the histogram) with a drop at the bright end (left side) — the drop marks the TRGB. The Sobel filter response (the derivative of this histogram) should show a single clear peak at the TRGB location. Multiple peaks of similar height mean the detection is ambiguous; try increasing `tau` (more smoothing) or tightening the color selection.
-- **Bootstrap distribution (right panel):** The distribution of TRGB estimates from repeated resampling should look like a single bell-shaped curve centered on your measurement. A bimodal (two-humped) distribution means the algorithm is jumping between two candidate edges; increase `tau` until the distribution becomes unimodal.
+- **Bootstrap distribution (right panel):** The distribution of TRGB estimates from repeated resampling should look like a single bell-shaped curve centered on your measurement. A bimodal (two-humped) distribution means the algorithm is jumping between two candidate edges.
 
 The notebook's **Section 9a** contains a formal stability checklist — try `tau` values of 0.05, 0.10, 0.15, and 0.20, and shift `color_lo` and `color_hi` each by ±0.2 mag, checking that the TRGB magnitude does not move by more than ~0.03 mag across these variations. You should run this checklist for each galaxy. A measurement that shifts significantly under small parameter changes should not be reported as your final result without flagging the instability.
 
@@ -226,11 +208,14 @@ Scroll to **Section 8** in the notebook. The result is already computed from Ste
 d = 19.8 ± 0.8 Mpc
 ```
 
-μ is the distance modulus; d is the physical distance in megaparsecs (Mpc), where 1 Mpc ≈ 3.26 million light-years. As a sanity check: the challenge galaxies are all in the range μ ≈ 30–34 mag (roughly 10–65 Mpc). A value far outside this range suggests something went wrong in the detection — go back to Step 3, adjust your parameters, re-run from that cell downward, and check Section 8 again.
+μ is the distance modulus; d is the physical distance in megaparsecs (Mpc). As a sanity check: the challenge galaxies are all in the range μ ≈ 30–34 mag (roughly 10–65 Mpc). A value far outside this range suggests something went wrong in the detection — go back to Step 3, adjust your parameters, re-run from that cell downward, and check Section 8 again.
 
-You can compare your result to published measurements. Two useful public catalogs are:
-- **EDD** (Extragalactic Distance Database): a compilation of distance measurements to nearby galaxies from many methods — [edd.ifa.hawaii.edu](http://edd.ifa.hawaii.edu)
-- **CATs** (Carnegie-Chicago Hubble Program TRGB catalog): TRGB-specific distances — referenced in the notebook's citation list
+You can compare your result to published measurements. Two useful catalogs with public data are:
+- **EDD** (Extragalactic Distance Database): http://edd.ifa.hawaii.edu
+- **CATs** (Comparative Analysis of TRGBs): https://github.com/JiaxiWu1018/CATS-H0/tree/main
+
+The Carnegie-Chicago Hubble Program (CCHP) data is not public.
+
 
 ---
 
@@ -305,11 +290,33 @@ If you want to try different TRGB parameter choices and see the effect on H₀: 
 
 ## What to submit
 
-Contact your session coordinator for submission details and deadlines. In general, participants are expected to submit:
+Run **Section 9** of the TRGB notebook when you are satisfied with your measurement. This writes (or updates) your entry in `trgb_results.csv`. Submit that file. All required information is automatically computed and saved by the notebook — no manual data entry is needed.
 
-- Their completed TRGB notebook (with parameter choices and reasoning documented in text cells) — before submitting, save it explicitly with **File → Save and Checkpoint**
-- Their `trgb_results.csv` file
-- Their final H₀ value and uncertainty
+Each row in the CSV records everything needed to reproduce your H₀ measurement from the shared photometry files:
+
+| Column | Description |
+|---|---|
+| `galaxy_name` | Target galaxy you measured |
+| `phot_source` | Photometry source (`EDD` or `CATS`) |
+| `mu`, `sigma_mu` | Distance modulus and total uncertainty |
+| `trgb_app` | Target apparent TRGB magnitude (extinction-corrected) |
+| `trgb_app_anchor` | Anchor (NGC 4258) apparent TRGB magnitude (extinction-corrected) |
+| `tip_contrast` | Tip contrast quality diagnostic |
+| `n_stars`, `n_faint` | RGB star counts (total selected; stars within 1 mag below tip) |
+| `color_lo_f606w`, `color_hi_f606w` | F606W−F814W color selection window |
+| `color_lo_f555w`, `color_hi_f555w` | F555W−F814W color selection window |
+| `tau` | GLOESS smoothing bandwidth (mag) |
+| `bin_width` | Luminosity function bin size (mag) |
+| `edge_weighting` | Sobel edge weighting scheme (`simple`, `poisson`, or `hatt`) |
+| `poisson_floor` | Poisson floor used in edge detection |
+| `scale_factor` | Spatial clipping ellipse scale factor |
+| `mag_bright`, `mag_faint` | Magnitude range limits (`None` = automatic) |
+| `n_boot` | Number of bootstrap iterations |
+
+The organizers can verify your distance modulus as:
+$$\mu = \texttt{trgb\_app} - \texttt{trgb\_app\_anchor} + 29.397$$
+and reproduce your target TRGB measurement by re-running the notebook with the stated parameters. These parameters are saved and outputted by the notebook.
+
 
 All submitted results will be compiled into the public repository alongside the common dataset and analysis code.
 
@@ -342,10 +349,10 @@ All submitted results will be compiled into the public repository alongside the 
 → The galaxy name in `TARGET_GALAXY` does not match any entry in the challenge's calibrator list. Check spelling and capitalization — use exactly the format in the photometry filename (e.g. `'NGC1365'`, not `'ngc1365'` or `'NGC 1365'`).
 
 **The Sobel filter shows multiple peaks of similar height**
-→ The TRGB detection is ambiguous. Try increasing `tau` (more smoothing) or narrowing the color selection range. If the problem persists, the number of stars in your selection may be too low — try widening `color_hi` slightly.
+→ The TRGB detection is ambiguous. Try increasing `tau` (more smoothing with cautions, see the TRGB notebook) or narrowing the color selection range. If the problem persists, the number of stars in your selection may be too low — try widening `color_hi` slightly.
 
 **The bootstrap distribution is bimodal (two humps)**
-→ The algorithm is jumping between two candidate features. Increase `tau` until the distribution becomes a single peak.
+→ The algorithm is jumping between two candidate features. You will need to decide whether to adopt a larger uncertainty to account for this or adjust the smoothing.
 
 **Error: "ModuleNotFoundError: No module named '...'"**
 → A required package is missing. In your terminal (or Anaconda Prompt), run `conda install <package-name>` (Anaconda users) or `pip install <package-name>` (standalone Python), then restart Jupyter and try again.
@@ -361,4 +368,24 @@ All submitted results will be compiled into the public repository alongside the 
 
 ---
 
-*Questions? Contact the CosmoVerse Data Challenge organizers: Siyang Li, Eleonora Di ssValentino, Jackson Said
+*Questions? Contact the CosmoVerse Data Challenge organizers: Siyang Li, Eleonora Di Valentino, Jackson Said*
+
+---
+
+## Acknowledgements
+
+### Data Challenge Organizers
+Siyang Li, Eleonora Di Valentino, Jackson Said 
+
+### Challenge preparation and materials
+Siyang Li, Yukei Murakami, Kayla Owens (team leads)
+
+### Notebooks
+- **TRGB distance measurement notebook** (`1_TRGB/`): Siyang Li (coordinator); algorithm contributors: Chandra Shekhar Saraf, Swayamtrupta Panda, Mahdi Najafi, Rahul Shah, Luis Escamilla, Payam Ghafari, Masoume Reyhani
+- **Hubble constant notebook** (`2_hubble_constant/`): Yukei Murakami
+
+### Data curation
+Kayla Owens (coordinator); Masroor C. Pookkillath, Ayush Hazarika, Antonio Quintana, Trisha Khan, Jess Worsley, Vasiliki Karanasou, Yoelsy Leyva
+
+---
+

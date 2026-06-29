@@ -152,7 +152,7 @@ Scroll down through the notebook until you see the heading **"2."**. Find the li
 TARGET_GALAXY = 'NGC1365'   # ← change this
 ```
 
-Replace `'NGC1365'` with the name of your assigned galaxy (e.g. `'NGC4536'`). Use the exact same capitalization and format as the photometry filename — for most galaxies this is `'NGC'` followed by the number with no spaces (e.g. `'NGC1448'`). For Messier galaxies the prefix is `'M'` (e.g. `'M101'`). Do not change anything else in this cell.
+Replace `'NGC1365'` with the name of your target galaxy (e.g. `'NGC4536'`). Use the exact same capitalization and format as the photometry filename — for most galaxies this is `'NGC'` followed by the number with no spaces (e.g. `'NGC1448'`). For Messier galaxies the prefix is `'M'` (e.g. `'M101'`). Do not change anything else in this cell.
 
 ---
 
